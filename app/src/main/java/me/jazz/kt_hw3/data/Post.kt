@@ -6,8 +6,8 @@ class Post(
     val fromId : Int,
     val date :Long,
     val text :String,
-    val comments : Int,
-    val likes : Int,
-    val rposts : Int,
-    val postType : String
+    val comments : PostOptions?,
+    val likes : PostOptions?,
+    val shares : PostOptions?,
+    val postType : String?
 )
