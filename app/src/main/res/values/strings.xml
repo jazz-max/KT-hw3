@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">KT-hw3</string>
+    <string name="str_avatar">avatar</string>
+    <string name="str_share">share</string>
+    <string name="str_comment">comment</string>
+    <string name="str_likes">likes</string>
+</resources>

@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/list_item_padding">
+
+    <ImageView
+        android:contentDescription="@string/str_avatar"
+        android:id="@+id/avatar"
+        android:layout_width="48dp"
+        android:layout_height="@dimen/avatar_size"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_android_gray_24dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txtData"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_default"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textSize="@dimen/text_size_date"
+        android:textColor="@color/colorData"
+        app:layout_constraintBottom_toTopOf="@id/txtAuthor"
+        app:layout_constraintStart_toEndOf="@id/avatar"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="5 минут назад" />
+
+    <TextView
+        android:id="@+id/txtAuthor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_default"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textColor="@color/colorAuthor"
+        app:layout_constraintBottom_toBottomOf="@id/avatar"
+        app:layout_constraintStart_toEndOf="@id/avatar"
+        app:layout_constraintTop_toBottomOf="@id/txtData"
+        tools:text="Netology" />
+
+    <TextView
+        android:id="@+id/txtPostText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_default"
+        android:textColor="@color/colorAuthor"
+        android:layout_marginTop="@dimen/margin_default"
+        app:layout_constraintBottom_toBottomOf="parentr"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/avatar"
+        tools:text="Firstpost in our network!" />
+
+    <TextView
+        android:id="@+id/txtShare"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_default"
+        android:ellipsize="end"
+        android:foregroundGravity="right"
+        android:maxLines="1"
+        android:textColor="@color/colorData"
+        app:layout_constraintBottom_toBottomOf="@id/imgShare"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/imgShare"
+        app:layout_constraintStart_toEndOf=""
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        tools:text="2" />
+
+    <ImageView
+        android:contentDescription="@string/str_share"
+        android:id="@+id/imgShare"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:layout_marginEnd="@dimen/margin_default"
+        android:src="@drawable/ic_share_24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/txtShare"
+        app:layout_constraintHorizontal_chainStyle="spread"
+         />
+
+    <TextView
+        android:id="@+id/txtComments"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_default"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textColor="@color/colorData"
+        app:layout_constraintBottom_toBottomOf="@id/imgComments"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        app:layout_constraintStart_toEndOf="@id/imgComments"
+        app:layout_constraintTop_toTopOf="@id/imgComments"
+        tools:text="2" />
+
+    <ImageView
+        android:contentDescription="@string/str_comment"
+        android:id="@+id/imgComments"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_default"
+        android:src="@drawable/ic_mode_comment_24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/imgShare"
+        app:layout_constraintStart_toEndOf="@id/imgLikes" />
+
+    <TextView
+        android:id="@+id/txtLikes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_default"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textColor="@color/colorData"
+        app:layout_constraintBottom_toBottomOf="@id/imgLikes"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        app:layout_constraintStart_toEndOf="@id/imgLikes"
+        app:layout_constraintTop_toTopOf="@id/imgLikes"
+        tools:text="2" />
+
+    <ImageView
+        android:contentDescription="@string/str_likes"
+        android:id="@+id/imgLikes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:foregroundGravity="center_horizontal"
+        android:src="@drawable/ic_mode_comment_24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
