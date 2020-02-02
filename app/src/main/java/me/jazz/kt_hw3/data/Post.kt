@@ -8,6 +8,6 @@ class Post(
     val text :String,
     val comments : Int,
     val likes : Int,
-    val rposts : String,
+    val rposts : Int,
     val postType : String
 )

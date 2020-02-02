@@ -5,8 +5,6 @@
 	android:layout_width="match_parent"
 	android:layout_height="wrap_content"
 	android:theme="@style/AppTheme"
-	card_view:cardCornerRadius="0dp"
-	card_view:cardElevation="@dimen/card_elevation"
 	tools:showIn="@layout/fragment_posts_recycler">
 
 	<include layout="@layout/posts_list_item" />

@@ -50,7 +50,6 @@
         android:layout_marginStart="@dimen/margin_default"
         android:textColor="@color/colorAuthor"
         android:layout_marginTop="@dimen/margin_default"
-        app:layout_constraintBottom_toBottomOf="parentr"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/avatar"
         tools:text="Firstpost in our network!" />
@@ -67,7 +66,6 @@
         app:layout_constraintBottom_toBottomOf="@id/imgShare"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@id/imgShare"
-        app:layout_constraintStart_toEndOf=""
         app:layout_constraintHorizontal_chainStyle="spread_inside"
         tools:text="2" />
 

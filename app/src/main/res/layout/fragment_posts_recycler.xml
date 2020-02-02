@@ -8,16 +8,15 @@
 	<androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 		android:id="@+id/swiperefresh"
 		android:layout_width="match_parent"
-		android:layout_height="match_parent"
-		app:layout_behavior="@string/appbar_scrolling_view_behavior">
+		android:layout_height="match_parent" >
 
 		<androidx.recyclerview.widget.RecyclerView
 			android:id="@+id/recycler_list"
-			android:name="ru.deti74.zakupki.feature.orders.presentation.OrderFragment"
+			android:name="me.jazz.kt_hw3.presentation.MainActivity"
 			android:layout_width="match_parent"
 			android:layout_height="match_parent"
 			app:layoutManager="LinearLayoutManager"
-			tools:context=".feature.orders.presentation.ui.OrdersFragment"
+			tools:context=".presentation.MainActivity"
 			tools:listitem="@layout/post_card" />
 
 	</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
