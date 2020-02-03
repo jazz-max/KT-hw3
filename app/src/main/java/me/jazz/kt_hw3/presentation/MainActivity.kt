@@ -54,6 +54,15 @@ class MainActivity : AppCompatActivity() {
                         "https://videos-bb5ddb7a.cdn.integros.com/videos/9p3CK2QYDhac5wPRmFhepQ/mp4/720.mp4"
                     )
                 )
+            ),
+            Post(
+                6, "Netology", "Весна – открытый фильм Blender", now - 3600 * 5,
+                attachments = listOf(
+                    Pair(
+                        "video",
+                        "https://www.youtube.com/watch?v=WhWc3b3KhnY"
+                    )
+                )
             )
         )
         list.forEach { post ->
