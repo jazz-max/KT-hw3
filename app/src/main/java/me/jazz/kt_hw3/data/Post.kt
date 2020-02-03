@@ -1,13 +1,13 @@
 package me.jazz.kt_hw3.data
 
-class Post(
+data class Post(
     val id : Int,
-    val ownerId : Int,
-    val fromId : Int,
-    val date :Long,
-    val text :String,
-    val comments : PostOptions?,
-    val likes : PostOptions?,
-    val shares : PostOptions?,
-    val postType : String?
+    val authorName : String,
+    val content :String,
+    val dateCreated :Long,
+    var comments : PostOptions = PostOptions(),
+    var likes : PostOptions = PostOptions(),
+    var shares : PostOptions = PostOptions(),
+    val postType : PostType = PostType.POST,
+    val source : Post? = null
 )

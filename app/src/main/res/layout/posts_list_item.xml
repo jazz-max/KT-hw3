@@ -1,30 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:padding="@dimen/list_item_padding">
 
     <ImageView
-        android:contentDescription="@string/str_avatar"
         android:id="@+id/avatar"
         android:layout_width="48dp"
         android:layout_height="@dimen/avatar_size"
+        android:contentDescription="@string/str_avatar"
         android:scaleType="centerCrop"
         android:src="@drawable/ic_android_gray_24dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/txtData"
+        android:id="@+id/txtDateCreated"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/margin_default"
         android:ellipsize="end"
         android:maxLines="1"
-        android:textSize="@dimen/text_size_date"
         android:textColor="@color/colorData"
+        android:textSize="@dimen/text_size_date"
         app:layout_constraintBottom_toTopOf="@id/txtAuthor"
         app:layout_constraintStart_toEndOf="@id/avatar"
         app:layout_constraintTop_toTopOf="parent"
@@ -40,16 +40,16 @@
         android:textColor="@color/colorAuthor"
         app:layout_constraintBottom_toBottomOf="@id/avatar"
         app:layout_constraintStart_toEndOf="@id/avatar"
-        app:layout_constraintTop_toBottomOf="@id/txtData"
+        app:layout_constraintTop_toBottomOf="@id/txtDateCreated"
         tools:text="Netology" />
 
     <TextView
-        android:id="@+id/txtPostText"
+        android:id="@+id/txtPostContent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/margin_default"
-        android:textColor="@color/colorAuthor"
         android:layout_marginTop="@dimen/margin_default"
+        android:textColor="@color/colorAuthor"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/avatar"
         tools:text="Firstpost in our network!" />
@@ -65,22 +65,21 @@
         android:textColor="@color/colorData"
         app:layout_constraintBottom_toBottomOf="@id/imgShare"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/imgShare"
         app:layout_constraintHorizontal_chainStyle="spread_inside"
+        app:layout_constraintTop_toTopOf="@id/imgShare"
         tools:text="2" />
 
     <ImageView
-        android:contentDescription="@string/str_share"
         android:id="@+id/imgShare"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="36dp"
         android:layout_marginEnd="@dimen/margin_default"
+        android:contentDescription="@string/str_share"
         android:src="@drawable/ic_share_24dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/txtShare"
-        app:layout_constraintHorizontal_chainStyle="spread"
-         />
+        app:layout_constraintHorizontal_chainStyle="spread" />
 
     <TextView
         android:id="@+id/txtComments"
@@ -97,11 +96,11 @@
         tools:text="2" />
 
     <ImageView
-        android:contentDescription="@string/str_comment"
         android:id="@+id/imgComments"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/margin_default"
+        android:contentDescription="@string/str_comment"
         android:src="@drawable/ic_mode_comment_24dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/imgShare"
@@ -122,16 +121,18 @@
         tools:text="2" />
 
     <ImageView
-        android:contentDescription="@string/str_likes"
         android:id="@+id/imgLikes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:contentDescription="@string/str_likes"
         android:foregroundGravity="center_horizontal"
-        android:src="@drawable/ic_mode_comment_24dp"
+        android:src="@drawable/ic_favorite_24dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtPostContent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
