@@ -1,5 +1,6 @@
 package me.jazz.kt_hw3.data
 
+
 data class Post(
     val id : Int,
     val authorName : String,
@@ -9,5 +10,6 @@ data class Post(
     var likes : PostOptions = PostOptions(),
     var shares : PostOptions = PostOptions(),
     val postType : PostType = PostType.POST,
-    val source : Post? = null
+    val source : Post? = null,
+    val location : Triple<String?, Double?, Double?>? = null
 )
