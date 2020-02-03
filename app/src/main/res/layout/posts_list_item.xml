@@ -54,6 +54,15 @@
         app:layout_constraintTop_toBottomOf="@id/avatar"
         tools:text="Firstpost in our network!" />
 
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/containerAttachements"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toBottomOf="@id/txtPostContent"
+        android:orientation="vertical">
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
     <TextView
         android:id="@+id/txtShare"
         android:layout_width="wrap_content"
@@ -132,7 +141,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtPostContent" />
+        app:layout_constraintTop_toBottomOf="@+id/containerAttachements" />
 
     <ImageView
         android:id="@+id/imgLocation"
@@ -146,7 +155,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtPostContent" />
+        app:layout_constraintTop_toBottomOf="@+id/containerAttachements" />
 
     <TextView
         android:id="@+id/txtLocation"

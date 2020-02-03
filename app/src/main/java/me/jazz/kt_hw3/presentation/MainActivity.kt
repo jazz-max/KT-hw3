@@ -29,10 +29,10 @@ class MainActivity : AppCompatActivity() {
         val now: Long = Date().time / 1000
 
         val list = listOf(
-            Post(
-                3, "Netology", "Welcome to Kotlin Course!", now - 10,
-                comments = PostOptions(1, true, isCanChange = true)
-            ),
+             Post(
+                 3, "Netology", "Welcome to Kotlin Course!", now - 10,
+                 comments = PostOptions(1, true, isCanChange = true)
+             ),
             Post(
                 1, "Netology", "First it in our network!", now - 3600,
                 shares = PostOptions(1, true, isCanChange = true)
@@ -45,6 +45,15 @@ class MainActivity : AppCompatActivity() {
                 4, "Netology", "Приглашаем на первую встречу!", now - 180,
                 postType = PostType.EVENT,
                 location = Triple("Дворцовая пл., Санкт-Петербург, 191186", null, null)
+            ),
+            Post(
+                5, "Netology", "Запись вебинара по теме Коллекции", now - 7200,
+                attachments = listOf(
+                    Pair(
+                        "video",
+                        "https://videos-bb5ddb7a.cdn.integros.com/videos/9p3CK2QYDhac5wPRmFhepQ/mp4/720.mp4"
+                    )
+                )
             )
         )
         list.forEach { post ->
@@ -106,6 +115,28 @@ class MainActivity : AppCompatActivity() {
                 } else {
                     imgLocation.visibility = View.GONE
                     txtLocation.visibility = View.GONE
+                }
+
+                if (post.attachments != null) {
+                    val container = containerAttachements
+                    post.attachments.forEach {
+                        val (type, url) = it
+                        if (type == "video") {
+                            //TODO вставка реальной заглушки для видео
+                            val splash: View =
+                                layoutInflater.inflate(R.layout.video_dummy, container, false)
+
+                            splash.setOnClickListener {
+                                val intent = Intent().apply {
+                                    action = Intent.ACTION_VIEW
+                                    data = Uri.parse(url)
+                                }
+                                startActivity(intent)
+                            }
+
+                            container.addView(splash)
+                        }
+                    }
                 }
             }
             root.addView(view)

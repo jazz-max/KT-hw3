@@ -4,4 +4,5 @@
     <string name="str_share">share</string>
     <string name="str_comment">comment</string>
     <string name="str_likes">likes</string>
+    <string name="str_video">VIDEO</string>
 </resources>
