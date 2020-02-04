@@ -6,7 +6,6 @@
     android:layout_height="wrap_content"
     android:layout_margin="@dimen/margin_default"
     android:theme="@style/AppTheme"
-    card_view:cardCornerRadius="0dp"
     card_view:cardElevation="8dp"
     tools:showIn="@layout/activity_main">
 
@@ -73,7 +72,7 @@
             android:orientation="vertical"
             app:layout_constraintTop_toBottomOf="@id/txtPostContent">
 
-            <!--        <include layout="@layout/video_dummy" />-->
+<!--            <include layout="@layout/video_dummy" />-->
 
         </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -182,6 +181,16 @@
             app:layout_constraintEnd_toStartOf="@id/imgLikes"
             app:layout_constraintStart_toEndOf="@id/imgLocation"
             tools:text="Дворцовая пл., Санкт-Петербург, 191186" />
+
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:src="@drawable/ic_close_black_24dp"
+            android:contentDescription="@string/str_close"
+            android:id="@+id/imgClose" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

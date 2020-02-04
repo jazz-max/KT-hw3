@@ -7,5 +7,6 @@
     <color name="colorBody">#000000</color>
     <color name="colorData">#999999</color>
     <color name="colorTertiary">#f5f4f9</color>
+    <color name="colorAdsBk">#FCF2A2</color>
 
 </resources>

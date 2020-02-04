@@ -9,6 +9,9 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.posts_list_item.view.*
 import me.jazz.kt_hw3.R
 import me.jazz.kt_hw3.data.Post
@@ -24,15 +27,31 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_main)
-        val root: LinearLayout = findViewById(R.id.container)
+        val container: RecyclerView = findViewById(R.id.container)
+        val postAdapter = PostAdapter(createListPosts())
 
+        with(container) {
+            layoutManager = LinearLayoutManager(this@MainActivity)
+            adapter = postAdapter
+        }
+        swipe.setOnRefreshListener {
+            with(postAdapter) {
+                list = createListPosts()
+                notifyDataSetChanged()
+            }
+            swipe.isRefreshing = false
+        }
+    }
+
+
+    private fun createListPosts(): MutableList<Post> {
         val now: Long = Date().time / 1000
 
-        val list = listOf(
-             Post(
-                 3, "Netology", "Welcome to Kotlin Course!", now - 10,
-                 comments = PostOptions(1, true, isCanChange = true)
-             ),
+        return mutableListOf(
+            Post(
+                3, "Netology", "Welcome to Kotlin Course!", now - 10,
+                comments = PostOptions(1, true, isCanChange = true)
+            ),
             Post(
                 1, "Netology", "First it in our network!", now - 3600,
                 shares = PostOptions(1, true, isCanChange = true)
@@ -63,8 +82,29 @@ class MainActivity : AppCompatActivity() {
                         "https://www.youtube.com/watch?v=WhWc3b3KhnY"
                     )
                 )
+            ),
+            Post(
+                7, "Netology", "Анонсы событий и промокоды в декабре", now - 3600 * 50,
+                postType = PostType.ADS,
+                attachments = listOf(
+                    Pair(
+                        "img",
+                        "https://netology.ru/content/i6/6896.jpg"
+                    ),
+                    Pair(
+                        "link",
+                        "Поробнее ...|https://netology.ru/blog/12-2019-sobytya-i-promokody-v-dekabre"
+                    )
+                )
             )
         )
+    }
+
+    private fun initList(
+        list: List<Post>,
+        root: LinearLayout
+    ) {
+        val now: Long = Date().time / 1000
         list.forEach { post ->
             val view = layoutInflater.inflate(R.layout.posts_list_item, root, false).apply {
                 txtPostContent.text = post.content
@@ -97,8 +137,8 @@ class MainActivity : AppCompatActivity() {
                         action = Intent.ACTION_SEND
                         putExtra(
                             Intent.EXTRA_TEXT, """
-                                 ${post.authorName} (${txtDateCreated.text})
-                                 ${post.content} """.trimIndent()
+                                     ${post.authorName} (${txtDateCreated.text})
+                                     ${post.content} """.trimIndent()
                         )
                         type = "text/plain"
                     }
@@ -162,7 +202,6 @@ class MainActivity : AppCompatActivity() {
         }
         startActivity(intent)
     }
-
 
     fun postOptions2UI(opt: PostOptions, img: ImageView, txt: TextView) {
         // сначала все по дефолту

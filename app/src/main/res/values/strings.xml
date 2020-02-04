@@ -5,4 +5,5 @@
     <string name="str_comment">comment</string>
     <string name="str_likes">likes</string>
     <string name="str_video">VIDEO</string>
+    <string name="str_close">закрыть</string>
 </resources>
