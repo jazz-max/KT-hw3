@@ -6,4 +6,5 @@
     android:scaleType="fitCenter"
     android:src="@drawable/ic_ondemand_video_black_24dp"
     tools:showIn="@layout/posts_list_item"
+    android:background="@color/colorBody"
     android:contentDescription="@string/str_video" />

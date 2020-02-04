@@ -61,6 +61,8 @@
         app:layout_constraintTop_toBottomOf="@id/txtPostContent"
         android:orientation="vertical">
 
+<!--        <include layout="@layout/video_dummy" />-->
+
     </androidx.appcompat.widget.LinearLayoutCompat>
 
     <TextView
