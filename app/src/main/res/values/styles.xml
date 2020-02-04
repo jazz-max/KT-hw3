@@ -8,6 +8,8 @@
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:textColor">@color/colorBody</item>
         <item name="android:textSize">18sp</item>
+        <item name="android:windowBackground">@color/colorTertiary</item>
+
     </style>
 
 </resources>

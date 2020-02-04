@@ -131,7 +131,6 @@ class MainActivity : AppCompatActivity() {
                     post.attachments.forEach {
                         val (type, url) = it
                         if (type == "video") {
-                            //TODO вставка реальной заглушки для видео
                             val splash: View =
                                 layoutInflater.inflate(R.layout.video_dummy, container, false)
 

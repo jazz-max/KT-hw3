@@ -6,4 +6,6 @@
     <color name="colorAuthor">#000000</color>
     <color name="colorBody">#000000</color>
     <color name="colorData">#999999</color>
+    <color name="colorTertiary">#f5f4f9</color>
+
 </resources>

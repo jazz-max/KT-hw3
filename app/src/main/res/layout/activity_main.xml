@@ -12,13 +12,15 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent">
 
-        <LinearLayout
+        <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            tools:listitem="@layout/posts_list_item"
+            >
 
-        </LinearLayout>
+        </androidx.recyclerview.widget.RecyclerView>
     </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
