@@ -15,10 +15,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.posts_list_item.view.*
 import me.jazz.kt_hw3.R
-import me.jazz.kt_hw3.data.Post
-import me.jazz.kt_hw3.data.PostOptions
-import me.jazz.kt_hw3.data.PostType
-import me.jazz.kt_hw3.data.pluralTimeAgo
+import me.jazz.kt_hw3.data.*
 import java.util.*
 
 class PostAdapter(
@@ -43,7 +40,7 @@ class PostViewHolder(adapter: PostAdapter, view: View) : RecyclerView.ViewHolder
     init {
         with(itemView) {
 
-            imgLikes.setOnClickListener { imgLike: View ->
+            imgLikes.setOnClickListener {
                 val post = adapter.list[adapterPosition]
                 if (post.likes.selected) {
                     post.likes.count -= 1
@@ -55,7 +52,7 @@ class PostViewHolder(adapter: PostAdapter, view: View) : RecyclerView.ViewHolder
                 adapter.notifyItemChanged(adapterPosition)
             }
 
-            imgShare.setOnClickListener { imgS: View ->
+            imgShare.setOnClickListener {
                 val post = adapter.list[adapterPosition]
                 post.shares.count++
                 post.shares.selected = true
@@ -148,52 +145,50 @@ class PostViewHolder(adapter: PostAdapter, view: View) : RecyclerView.ViewHolder
             val container = containerAttachements
             container.removeAllViews() // вычищаем все, что было до рендеринга
 
-            if (post.attachments != null) {
-                post.attachments.forEach {
-                    val (type, url) = it
-                    when (type) {
-                        "video" -> {
-                            val splash: View =
-                                LayoutInflater.from(itemView.context)
-                                    .inflate(R.layout.video_dummy, container, false)
+            post.attachments?.forEach {
+                val (type, url) = it
+                when (type) {
+                    AttacheType.VIDEO -> {
+                        val splash: View =
+                            LayoutInflater.from(itemView.context)
+                                .inflate(R.layout.video_dummy, container, false)
 
-                            splash.setOnClickListener {
-                                val intent = Intent().apply {
-                                    action = Intent.ACTION_VIEW
-                                    data = Uri.parse(url)
-                                }
-                                context.startActivity(intent)
+                        splash.setOnClickListener {
+                            val intent = Intent().apply {
+                                action = Intent.ACTION_VIEW
+                                data = Uri.parse(url)
                             }
-                            container.addView(splash)
+                            context.startActivity(intent)
                         }
-                        "link" -> {
-                            val (text, uri) = url.split("|")
-                            val link: TextView = TextView(container.context).apply {
-                                this.text = text
-                                setTextColor(ContextCompat.getColor(context, R.color.colorPrimary))
-                                setTypeface(typeface, Typeface.BOLD_ITALIC)
-                            }
-
-                            link.setOnClickListener {
-                                val intent = Intent().apply {
-                                    action = Intent.ACTION_VIEW
-                                    data = Uri.parse(uri)
-                                }
-                                context.startActivity(intent)
-                            }
-                            container.addView(link)
+                        container.addView(splash)
+                    }
+                    AttacheType.LINK -> {
+                        val (text, uri) = url.split("|")
+                        val link: TextView = TextView(container.context).apply {
+                            this.text = text
+                            setTextColor(ContextCompat.getColor(context, R.color.colorPrimary))
+                            setTypeface(typeface, Typeface.BOLD_ITALIC)
                         }
-                        "img" -> {
-                            val img = ImageView(container.context).apply {
 
+                        link.setOnClickListener {
+                            val intent = Intent().apply {
+                                action = Intent.ACTION_VIEW
+                                data = Uri.parse(uri)
                             }
-                            Picasso.get().load(url).into(img)
-                            container.addView(img)
-                            img.layoutParams.height = LinearLayout.LayoutParams.WRAP_CONTENT
+                            context.startActivity(intent)
+                        }
+                        container.addView(link)
+                    }
+                    AttacheType.IMG -> {
+                        val img = ImageView(container.context).apply {
+
+                        }
+                        Picasso.get().load(url).into(img)
+                        container.addView(img)
+                        img.layoutParams.height = LinearLayout.LayoutParams.WRAP_CONTENT
 //                            img.layoutParams.height = 0
-                            img.layoutParams.width = LinearLayout.LayoutParams.MATCH_PARENT
-                            img.scaleType = ImageView.ScaleType.FIT_CENTER
-                        }
+                        img.layoutParams.width = LinearLayout.LayoutParams.MATCH_PARENT
+                        img.scaleType = ImageView.ScaleType.FIT_CENTER
                     }
                 }
             }

@@ -11,6 +11,6 @@ data class Post(
     var shares : PostOptions = PostOptions(),
     val postType : PostType = PostType.POST,
     val source : Post? = null,
-    val location : Triple<String?, Double?, Double?>? = null,
-    val attachments : List<Pair<String, String>>? = null
+    val location: PostLocation? = null,
+    val attachments: List<PostAttache>? = null
 )
