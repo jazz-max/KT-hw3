@@ -1,31 +1,40 @@
 package me.jazz.kt_hw3.presentation
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import dagger.android.DaggerActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import me.jazz.kt_hw3.R
 import me.jazz.kt_hw3.data.*
+import me.jazz.kt_hw3.di.ResourceProvider
+import me.jazz.kt_hw3.presentation.model.PostsUiConverter
+import me.jazz.kt_hw3.presentation.ui.PostsAdapter
 import java.util.*
+import javax.inject.Inject
 
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : DaggerActivity() {
+    @Inject
+    lateinit var resourceProvider: ResourceProvider
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_main)
         val container: RecyclerView = findViewById(R.id.container)
-        val postAdapter = PostAdapter(createListPosts())
+//        val postAdapter = PostAdapter(createListPosts())
+        val postAdapter =
+            PostsAdapter(PostsUiConverter(resourceProvider).convert(createListPosts()))
 
-        with(container) {
-            layoutManager = LinearLayoutManager(this@MainActivity)
+        recycler?.apply {
             adapter = postAdapter
+            layoutManager = LinearLayoutManager(this@MainActivity)
+
         }
         swipe.setOnRefreshListener {
             with(postAdapter) {
-                list = createListPosts()
+                postItems = PostsUiConverter(resourceProvider).convert(createListPosts())
                 notifyDataSetChanged()
             }
             swipe.isRefreshing = false
@@ -39,15 +48,15 @@ class MainActivity : AppCompatActivity() {
         return mutableListOf(
             Post(
                 3, "Netology", "Welcome to Kotlin Course!", now - 10,
-                comments = PostOptions(1, true, isCanChange = true)
+                comments = PostOptions(R.drawable.ic_mode_comment_24dp, 1, true, isCanChange = true)
             ),
             Post(
                 1, "Netology", "First it in our network!", now - 3600,
-                shares = PostOptions(1, true, isCanChange = true)
+                shares = PostOptions(R.drawable.ic_share_24dp, 1, true, isCanChange = true)
             ),
             Post(
                 2, "Netology", "Our network is growing!", now - 180,
-                likes = PostOptions(1, true, isCanChange = true)
+                likes = PostOptions(R.drawable.ic_favorite_24dp, 1, true, isCanChange = true)
             ),
             Post(
                 4, "Netology", "Приглашаем на первую встречу!", now - 180,

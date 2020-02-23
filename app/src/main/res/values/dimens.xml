@@ -4,4 +4,5 @@
     <dimen name="list_item_padding">16dp</dimen>
     <dimen name="margin_default">8dp</dimen>
     <dimen name="text_size_date">10sp</dimen>
+    <dimen name="margin_big">36dp</dimen>
 </resources>

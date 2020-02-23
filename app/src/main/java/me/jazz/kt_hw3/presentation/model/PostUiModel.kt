@@ -1,9 +1,10 @@
-package me.jazz.kt_hw3.data
+package me.jazz.kt_hw3.presentation.model
 
+import com.github.vivchar.rendererrecyclerviewadapter.ViewModel
 import me.jazz.kt_hw3.R
+import me.jazz.kt_hw3.data.*
 
-
-data class Post(
+data class PostUiModel(
     val id: Int,
     val authorName: String,
     val content: String,
@@ -15,4 +16,18 @@ data class Post(
     val source: Post? = null,
     val location: PostLocation? = null,
     val attachments: List<PostAttache>? = null
-)
+) : ViewModel {
+    constructor(post: Post) : this(
+        post.id,
+        post.authorName,
+        post.content,
+        post.dateCreated,
+        post.comments,
+        post.likes,
+        post.shares,
+        post.postType,
+        post.source,
+        post.location,
+        post.attachments
+    )
+}

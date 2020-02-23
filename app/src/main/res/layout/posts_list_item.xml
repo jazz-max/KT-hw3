@@ -10,12 +10,11 @@
     tools:showIn="@layout/activity_main">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:descendantFocusability="blocksDescendants"
         android:orientation="horizontal"
-        android:padding="@dimen/list_item_padding">
+        android:padding="@dimen/margin_default">
 
         <ImageView
             android:id="@+id/avatar"
@@ -23,152 +22,107 @@
             android:layout_height="@dimen/avatar_size"
             android:contentDescription="@string/str_avatar"
             android:scaleType="centerCrop"
+            android:layout_margin="@dimen/margin_default"
             android:src="@drawable/ic_android_gray_24dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            card_view:layout_constraintStart_toStartOf="parent"
+            card_view:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/txtDateCreated"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_default"
             android:ellipsize="end"
             android:maxLines="1"
             android:textColor="@color/colorData"
             android:textSize="@dimen/text_size_date"
-            app:layout_constraintBottom_toTopOf="@id/txtAuthor"
-            app:layout_constraintStart_toEndOf="@id/avatar"
-            app:layout_constraintTop_toTopOf="parent"
+            android:layout_margin="@dimen/margin_default"
+            card_view:layout_constraintBottom_toTopOf="@id/txtAuthor"
+            card_view:layout_constraintStart_toEndOf="@id/avatar"
+            card_view:layout_constraintTop_toTopOf="parent"
             tools:text="5 минут назад" />
 
         <TextView
             android:id="@+id/txtAuthor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_default"
             android:ellipsize="end"
             android:maxLines="1"
+            android:layout_margin="@dimen/margin_default"
             android:textColor="@color/colorAuthor"
-            app:layout_constraintBottom_toBottomOf="@id/avatar"
-            app:layout_constraintStart_toEndOf="@id/avatar"
-            app:layout_constraintTop_toBottomOf="@id/txtDateCreated"
+            card_view:layout_constraintBottom_toBottomOf="@id/avatar"
+            card_view:layout_constraintStart_toEndOf="@id/avatar"
+            card_view:layout_constraintTop_toBottomOf="@id/txtDateCreated"
             tools:text="Netology" />
 
         <TextView
             android:id="@+id/txtPostContent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_default"
-            android:layout_marginTop="@dimen/margin_default"
+            android:layout_margin="@dimen/margin_default"
             android:textColor="@color/colorAuthor"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/avatar"
+            card_view:layout_constraintStart_toStartOf="parent"
+            card_view:layout_constraintTop_toBottomOf="@id/avatar"
             tools:text="Firstpost in our network!" />
 
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:id="@+id/containerAttachements"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerAttachements"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            app:layout_constraintTop_toBottomOf="@id/txtPostContent">
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_default"
+            android:orientation="horizontal"
+            card_view:layout_constraintTop_toBottomOf="@id/txtPostContent"
+            tools:itemCount="1"
+            tools:layout_editor_absoluteX="16dp"
+            tools:listitem="@layout/video_dummy" />
 
-<!--            <include layout="@layout/video_dummy" />-->
-
-        </androidx.appcompat.widget.LinearLayoutCompat>
 
         <TextView
             android:id="@+id/txtShare"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_default"
+            android:layout_margin="@dimen/margin_default"
+            android:drawableStart="@drawable/ic_share_24dp"
+            android:drawableTint="@color/colorData"
             android:ellipsize="end"
             android:foregroundGravity="right"
             android:maxLines="1"
             android:textColor="@color/colorData"
-            app:layout_constraintBottom_toBottomOf="@id/imgShare"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_chainStyle="spread_inside"
-            app:layout_constraintTop_toTopOf="@id/imgShare"
+            card_view:layout_constraintEnd_toEndOf="parent"
+            card_view:layout_constraintHorizontal_chainStyle="spread_inside"
+            card_view:layout_constraintTop_toBottomOf="@id/recyclerAttachements"
             tools:text="2" />
 
-        <ImageView
-            android:id="@+id/imgShare"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="36dp"
-            android:layout_marginEnd="@dimen/margin_default"
-            android:contentDescription="@string/str_share"
-            android:src="@drawable/ic_share_24dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/txtShare"
-            app:layout_constraintHorizontal_chainStyle="spread" />
 
         <TextView
             android:id="@+id/txtComments"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_default"
+            android:layout_marginEnd="@dimen/margin_big"
+            android:drawableStart="@drawable/ic_mode_comment_24dp"
+            android:drawableTint="@color/colorData"
             android:ellipsize="end"
             android:maxLines="1"
             android:textColor="@color/colorData"
-            app:layout_constraintBottom_toBottomOf="@id/imgComments"
-            app:layout_constraintHorizontal_chainStyle="spread_inside"
-            app:layout_constraintStart_toEndOf="@id/imgComments"
-            app:layout_constraintTop_toTopOf="@id/imgComments"
+            card_view:layout_constraintBottom_toBottomOf="parent"
+            card_view:layout_constraintEnd_toStartOf="@+id/txtShare"
+            card_view:layout_constraintHorizontal_chainStyle="spread_inside"
+            card_view:layout_constraintTop_toBottomOf="@+id/recyclerAttachements"
             tools:text="2" />
-
-        <ImageView
-            android:id="@+id/imgComments"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_default"
-            android:contentDescription="@string/str_comment"
-            android:src="@drawable/ic_mode_comment_24dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/imgShare"
-            app:layout_constraintStart_toEndOf="@id/imgLikes" />
 
         <TextView
             android:id="@+id/txtLikes"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_default"
+            android:layout_height="24dp"
+            android:layout_marginEnd="@dimen/margin_big"
+            android:drawableStart="@drawable/ic_favorite_24dp"
+            android:drawableTint="@color/colorData"
             android:ellipsize="end"
             android:maxLines="1"
             android:textColor="@color/colorData"
-            app:layout_constraintBottom_toBottomOf="@id/imgLikes"
-            app:layout_constraintHorizontal_chainStyle="spread_inside"
-            app:layout_constraintStart_toEndOf="@id/imgLikes"
-            app:layout_constraintTop_toTopOf="@id/imgLikes"
-            tools:text="2" />
-
-        <ImageView
-            android:id="@+id/imgLikes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:contentDescription="@string/str_likes"
-            android:foregroundGravity="center_horizontal"
-            android:src="@drawable/ic_favorite_24dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_chainStyle="packed"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/containerAttachements" />
-
-        <ImageView
-            android:id="@+id/imgLocation"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:contentDescription="@string/str_likes"
-            android:foregroundGravity="center_horizontal"
-            android:src="@drawable/ic_location_on_black_24dp"
-            android:tint="@color/colorData"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_chainStyle="packed"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/containerAttachements" />
+            card_view:layout_constraintBottom_toBottomOf="parent"
+            card_view:layout_constraintEnd_toStartOf="@+id/txtComments"
+            card_view:layout_constraintTop_toBottomOf="@+id/recyclerAttachements"
+            tools:text="200" />
 
         <TextView
             android:id="@+id/txtLocation"
@@ -176,18 +130,22 @@
             android:layout_height="wrap_content"
             android:ellipsize="end"
             android:maxLines="1"
+            android:layout_margin="@dimen/margin_default"
             android:textColor="@color/colorData"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/imgLikes"
-            app:layout_constraintStart_toEndOf="@id/imgLocation"
+            android:drawableStart="@drawable/ic_location_on_black_24dp"
+            android:drawableTint="@color/colorData"
+            card_view:layout_constraintBottom_toBottomOf="parent"
+            card_view:layout_constraintEnd_toStartOf="@+id/txtLikes"
+            card_view:layout_constraintStart_toStartOf="parent"
+            card_view:layout_constraintTop_toBottomOf="@+id/recyclerAttachements"
             tools:text="Дворцовая пл., Санкт-Петербург, 191186" />
 
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            card_view:layout_constraintEnd_toEndOf="parent"
+            card_view:layout_constraintTop_toTopOf="parent"
             android:src="@drawable/ic_close_black_24dp"
             android:contentDescription="@string/str_close"
             android:id="@+id/imgClose" />

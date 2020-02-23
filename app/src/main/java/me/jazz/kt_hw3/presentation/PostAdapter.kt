@@ -40,7 +40,7 @@ class PostViewHolder(adapter: PostAdapter, view: View) : RecyclerView.ViewHolder
     init {
         with(itemView) {
 
-            imgLikes.setOnClickListener {
+            /*imgLikes.setOnClickListener {
                 val post = adapter.list[adapterPosition]
                 if (post.likes.selected) {
                     post.likes.count -= 1
@@ -76,7 +76,7 @@ class PostViewHolder(adapter: PostAdapter, view: View) : RecyclerView.ViewHolder
                     list.removeAt(adapterPosition)
                     notifyDataSetChanged()
                 }
-            }
+            }*/
         }
     }
 
@@ -120,29 +120,29 @@ class PostViewHolder(adapter: PostAdapter, view: View) : RecyclerView.ViewHolder
             txtPostContent.text = post.content
             txtAuthor.text = post.authorName
             txtDateCreated.text = pluralTimeAgo(now - post.dateCreated)
-            postOptions2UI(post.likes, imgLikes, txtLikes)
-            postOptions2UI(post.shares, imgShare, txtShare)
-            postOptions2UI(post.comments, imgComments, txtComments)
+            /*  postOptions2UI(post.likes, imgLikes, txtLikes)
+              postOptions2UI(post.shares, imgShare, txtShare)
+              postOptions2UI(post.comments, imgComments, txtComments)
 
-            // событие с местом
-            if (post.postType == PostType.EVENT && post.location != null) {
-                val (address, lat, lng) = post.location
-                imgLocation.visibility = View.VISIBLE
-                txtLocation.visibility = View.VISIBLE
-                txtLocation.text = address ?: ""
+              // событие с местом
+              if (post.postType == PostType.EVENT && post.location != null) {
+                  val (address, lat, lng) = post.location
+                  imgLocation.visibility = View.VISIBLE
+                  txtLocation.visibility = View.VISIBLE
+                  txtLocation.text = address ?: ""
 
-                imgLocation.setOnClickListener {
-                    openGeoAction(lat, lng, address, context)
-                }
-                txtLocation.setOnClickListener {
-                    openGeoAction(lat, lng, address, context)
-                }
-            } else {
-                imgLocation.visibility = View.GONE
-                txtLocation.visibility = View.GONE
-            }
+                  imgLocation.setOnClickListener {
+                      openGeoAction(lat, lng, address, context)
+                  }
+                  txtLocation.setOnClickListener {
+                      openGeoAction(lat, lng, address, context)
+                  }
+              } else {
+                  imgLocation.visibility = View.GONE
+                  txtLocation.visibility = View.GONE
+              }*/
             // вложения
-            val container = containerAttachements
+            val container = recyclerAttachements
             container.removeAllViews() // вычищаем все, что было до рендеринга
 
             post.attachments?.forEach {
